@@ -1,8 +1,12 @@
 import { FaMinus, FaPlus, FaShoppingCart } from "react-icons/fa";
 import "./ShoppingCart.css";
-import { UpdateCartWithQuantity } from "../../utils/utils";
+import {
+  getTotalPriceOfCartItems,
+  getTotalQuantityOfCartItems,
+  updateCartWithQuantity,
+} from "../../utils/utils";
 import type { ShoppingCartProps, UpdatedCart } from "../../types/types";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { CART_CONSTANTS } from "../../constants/constants";
 
 const ShoppingCart: React.FC<ShoppingCartProps> = ({ shoppingCartItems }) => {
@@ -11,21 +15,19 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({ shoppingCartItems }) => {
   >([]);
 
   useEffect(() => {
-    const updatedCart = UpdateCartWithQuantity(shoppingCartItems);
+    const updatedCart = updateCartWithQuantity(shoppingCartItems);
     setUpdatedCartWithQuantity(updatedCart);
   }, [shoppingCartItems, shoppingCartItems.length]);
 
-  const totalPriceOfCartItems = updatedCartWithQuantity.reduce(
-    (totalPrice, item) => totalPrice + item.price * item.quantity,
-    0
-  );
+  const totalPriceOfCartItems = useMemo(() => {
+    return getTotalPriceOfCartItems(updatedCartWithQuantity);
+  }, [updatedCartWithQuantity]);
 
-  const totalQuantity = updatedCartWithQuantity.reduce(
-    (totalQuantity, item) => totalQuantity + item.quantity,
-    0
-  );
+  const totalQuantity = useMemo(() => {
+    return getTotalQuantityOfCartItems(updatedCartWithQuantity);
+  }, [updatedCartWithQuantity]);
 
-  const handleIncrement = (nameOfTheItem: string) => {
+  const handleIncrement = useCallback((nameOfTheItem: string) => {
     setUpdatedCartWithQuantity((prevCartItems) =>
       prevCartItems.map((item) =>
         item.name === nameOfTheItem
@@ -33,9 +35,9 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({ shoppingCartItems }) => {
           : item
       )
     );
-  };
+  }, []);
 
-  const handleDecrement = (nameOfTheItem: string) => {
+  const handleDecrement = useCallback((nameOfTheItem: string) => {
     setUpdatedCartWithQuantity((prevCartItems) =>
       prevCartItems
         .map((item) =>
@@ -45,12 +47,13 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({ shoppingCartItems }) => {
         )
         .filter((item) => item.quantity > 0)
     );
-  };
-  const handleRemoval = (nameOfTheItem: string) => {
+  }, []);
+
+  const handleRemoval = useCallback((nameOfTheItem: string) => {
     setUpdatedCartWithQuantity((prevCartItems) =>
       prevCartItems.filter((item) => item.name != nameOfTheItem)
     );
-  };
+  }, []);
 
   return (
     <>

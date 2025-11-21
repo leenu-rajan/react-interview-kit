@@ -25,3 +25,23 @@ export const cartMockData = [
     price: 6000,
   },
 ];
+
+export const updatedCartWithQuantityMock = [
+  {
+    name: "Sofa",
+    price: 10000,
+    quantity: 3,
+  },
+
+  {
+    name: "Chair",
+    price: 5000,
+    quantity: 1,
+  },
+
+  {
+    name: "Study Table",
+    price: 6000,
+    quantity: 1,
+  },
+];

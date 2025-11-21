@@ -1,6 +1,6 @@
 import type { ShoppingCartItem, UpdatedCart } from "../types/types";
 
-export const UpdateCartWithQuantity = (
+export const updateCartWithQuantity = (
   shoppingCartItems: ShoppingCartItem[]
 ): UpdatedCart[] => {
   const updatedCart: UpdatedCart[] = [];
@@ -21,4 +21,24 @@ export const UpdateCartWithQuantity = (
     }
   }
   return updatedCart;
+};
+
+export const getTotalPriceOfCartItems = (
+  updatedCartWithQuantity: UpdatedCart[]
+): number => {
+  const totalPriceOfCartItems = updatedCartWithQuantity.reduce(
+    (totalPrice, item) => totalPrice + item.price * item.quantity,
+    0
+  );
+  return totalPriceOfCartItems;
+};
+
+export const getTotalQuantityOfCartItems = (
+  updatedCartWithQuantity: UpdatedCart[]
+): number => {
+  const totalQuantityOfCartItems = updatedCartWithQuantity.reduce(
+    (totalQuantity, item) => totalQuantity + item.quantity,
+    0
+  );
+  return totalQuantityOfCartItems;
 };
