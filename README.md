@@ -1,6 +1,18 @@
-# React Coding Round – Interview Starter Kit
+# React Cart Component
 
-Welcome to the React Coding Round repository! This project is designed to help you showcase your React skills in a structured and efficient way. Choose the branch that matches your tech stack and get started.
+Implemented a react cart componenet with increment , decrement functionalities for the components and the removal of items
+The cart also displays the total amount of the items.
+
+<img width="1920" height="1200" alt="Screenshot (12)" src="https://github.com/user-attachments/assets/83952922-c828-469e-8679-9162c03f83e8" />
+
+<img width="1920" height="1200" alt="Screenshot (13)" src="https://github.com/user-attachments/assets/3fbfe626-1a0b-4fd1-bef8-85e82b5f1ff8" />
+
+<img width="1920" height="1200" alt="Screenshot (14)" src="https://github.com/user-attachments/assets/54d6eb9c-0292-4e55-9fe9-65f79836065e" />
+
+
+<img width="1920" height="1200" alt="Screenshot (15)" src="https://github.com/user-attachments/assets/f2a9faa1-98a1-46eb-9162-38b4e2f104ce" />
+
+
 
 ---
 
