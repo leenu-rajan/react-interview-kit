@@ -1,0 +1,29 @@
+.shopping-cart-icon {
+  cursor: pointer;
+  align-items: right;
+  margin-bottom: 5%;
+}
+
+.shopping-cart-total-quantity {
+  color: rgb(200, 34, 34);
+}
+
+.cart-details-table {
+  border-collapse: collapse;
+}
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+th {
+  background-color: #e0e0e0;
+  font-size: 20px;
+}
+.total-price-section {
+  padding: 5%;
+}
+
+.shopping-cart-empty-message {
+  color: rgb(200, 34, 34);
+}
